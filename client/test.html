@@ -1,0 +1,27 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Websocket client test</title>
+</head>
+
+<body>
+<script>
+  let ws = new WebSocket('ws://127.0.0.1:9790/ws-test');
+
+  ws.onopen = (event) => {
+    console.log('open');
+    console.log(event);
+  };
+  ws.onerror = (event) => {
+    console.log('error');
+    console.log(event);
+  };
+  ws.onmessage = (event) => {
+    console.log('message');
+    console.log(event);
+  };
+</script>
+</body>
+</html>
