@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Media.Imaging;
 
 using WebSocketSharp;
 using WebSocketSharp.Server;
@@ -35,10 +27,6 @@ namespace ws_server
 
         private void send_Click(object sender, RoutedEventArgs e)
         {
-            /*if (wsHandler != null)
-            {
-                wsHandler.broadCast("{\"result\": true, \"date\": \"" + DateTime.Now.ToLongDateString() + "\"}");
-            }*/
             wsServer.WebSocketServices.Broadcast("{\"result\": true, \"date\": \"" + DateTime.Now.ToLongDateString() + "\"}");
         }
 
@@ -77,13 +65,5 @@ namespace ws_server
                 Send("{\"result\": false, \"message\": \"Unknown request\"}");
             }
         }
-
-        /*public void broadCast(string data)
-        {
-            if (Sessions != null)
-            {
-                Sessions.Broadcast(data);
-            }
-        }*/
     }
 }
