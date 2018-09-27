@@ -35,10 +35,11 @@ namespace ws_server
 
         private void send_Click(object sender, RoutedEventArgs e)
         {
-            if (wsHandler != null)
+            /*if (wsHandler != null)
             {
                 wsHandler.broadCast("{\"result\": true, \"date\": \"" + DateTime.Now.ToLongDateString() + "\"}");
-            }
+            }*/
+            wsServer.WebSocketServices.Broadcast("{\"result\": true, \"date\": \"" + DateTime.Now.ToLongDateString() + "\"}");
         }
 
         private void startWebSocketServer()
@@ -47,8 +48,8 @@ namespace ws_server
             wsServer = new WebSocketServer(9790);
 
             wsHandler = new WebSocketHandler();
-            wsServer.AddWebSocketService<WebSocketHandler>("/ws-test", () => wsHandler);
-            //wsServer.AddWebSocketService<WebSocketHandler>("/ws-test");
+            //wsServer.AddWebSocketService<WebSocketHandler>("/ws-test", () => wsHandler);
+            wsServer.AddWebSocketService<WebSocketHandler>("/ws-test");
             wsServer.Start();
             btn_send.IsEnabled = true;
         }
@@ -77,12 +78,12 @@ namespace ws_server
             }
         }
 
-        public void broadCast(string data)
+        /*public void broadCast(string data)
         {
             if (Sessions != null)
             {
                 Sessions.Broadcast(data);
             }
-        }
+        }*/
     }
 }
